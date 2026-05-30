@@ -1,0 +1,44 @@
+name: CI/CD Pipeline - Loja Veloz
+
+# O pipeline roda sempre que houver um push na branch main
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout do código
+      uses: actions/checkout@v3
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: 'inventory-service/package.json'
+
+    - name: Instalar Dependências
+      run: |
+        cd inventory-service
+        npm install
+
+    # Aqui entrariam os testes automatizados (npm test)
+    - name: Rodar Validações de Segurança (Audit)
+      run: |
+        cd inventory-service
+        npm audit --audit-level=high
+
+    - name: Configurar Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Build da Imagem Docker (Dry Run)
+      run: |
+        cd inventory-service
+        docker build -t loja-veloz-inventory:${{ github.sha }} .

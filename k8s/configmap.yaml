@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: inventory-config
+data:
+  # Variáveis não sensíveis
+  DB_HOST: "postgres-db"
+  RABBITMQ_URL: "amqp://rabbitmq"
