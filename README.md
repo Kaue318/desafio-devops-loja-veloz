@@ -14,3 +14,9 @@ Projeto prático do desafio de modernização da infraestrutura da "Loja Veloz".
 2. Na raiz do projeto, suba os contêineres:
    ```bash
    docker compose up -d --build
+
+   ## 🎬 Vídeo Pitch
+
+[**Assista ao vídeo de apresentação da arquitetura clicando aqui!**](Chttps://youtu.be/IgzKKzhtQ8A)
+
+---
