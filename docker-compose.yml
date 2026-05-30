@@ -22,7 +22,7 @@ services:
     build:
       context: ./inventory-service
     ports:
-      - "3000:3000"
+      - "3333:3000"
     environment:
       - DB_HOST=postgres-db
       - RABBITMQ_URL=amqp://rabbitmq

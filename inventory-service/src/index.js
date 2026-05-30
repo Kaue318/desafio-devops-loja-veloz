@@ -6,7 +6,7 @@ app.use(express.json());
 
 // Rota de Healthcheck (Essencial para o Kubernetes liveness/readiness probes)
 app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'UP', service: 'inventory-service' });
+    res.json({ status: 'UP' });
 });
 
 // Simulação de rota para baixa de itens e auditoria de estoque
@@ -23,6 +23,6 @@ app.post('/api/inventory/transfer', (req, res) => {
     res.status(200).json({ message: 'Transferência de estoque autorizada.' });
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Inventory Service rodando na porta ${PORT}`);
+app.listen(3000, '0.0.0.0', () => {
+  console.log('Inventory Service rodando na porta 3000');
 });
